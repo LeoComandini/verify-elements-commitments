@@ -1,0 +1,8 @@
+{
+  "inputs": [],
+  "outputs": [{
+    "asset_commitment_hex": "0bf7ecbf4c7f3ad4da3c69363db9bb301d18e0dd4c480a5d46996d74619cef08bf",
+    "amount_satoshi": 6315,
+    "amount_blinder_hex": "76ef94f4cdc86e27d706971ccb16af94bab14b82a7fc1f1def8dd065ad022706"
+  }]
+}
