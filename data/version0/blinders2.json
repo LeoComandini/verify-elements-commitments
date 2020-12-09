@@ -1,0 +1,79 @@
+{
+  "type": "outgoing",
+  "inputs": [
+    {
+      "vin": 0,
+      "amountblinder": "0fcfb822196d1e5b84fb450e687e3ad302d5ff0e855a3c61b0583fdfd9d9eea3",
+      "assetblinder": "bdcee9623160cdd765d5f0a7c3d3103789125f56edb859438fcae53089ef6860",
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 22439000
+    },
+    {
+      "assetblinder": "3e2b225fc0de0c0db1c861de2bc98e14bfcd7fa59fb1cca282bcc9260f4e7694",
+      "vin": 1,
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 10000000,
+      "amountblinder": "16a6e6588d283d0ca27c6ff78d1b02a171ba4e883baf8b69ac78ad8c65c7c2ef"
+    },
+    {
+      "satoshi": 10000000,
+      "amountblinder": "65e812858fa29c6dfc1399798ed14acddeed582c53498748a947f07b2a6a75dc",
+      "vin": 2,
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "assetblinder": "59ed7f3500169b158be7ae239f6a09155ca1d0cf25e1d691b0f2fd90abe3b2a2"
+    },
+    {
+      "satoshi": 107909,
+      "vin": 3,
+      "assetblinder": "50d8b78130f7af95f3d5a39d1dd08ee0cab32a86015cda6077a89f32f9187e1a",
+      "amountblinder": "3aea30bdffd16218ec76ec9fa9130db98e7b032e899553132ca1f7b48b358b3a",
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2"
+    },
+    {
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 107909,
+      "assetblinder": "435bebbfb85865276ba53b5ecc705ce0584b8ff6ee5d5f6801532d948d8db51c",
+      "amountblinder": "282afe07510f26b006c8a5d706abb22d672f4089c2fd769c8386807f4a3b4037",
+      "vin": 4
+    },
+    {
+      "vin": 5,
+      "assetblinder": "8882983a078e56f263fa0f63e2b2dbdcbecccf06e14fffefcecd7ffbeb2272b8",
+      "satoshi": 107909,
+      "amountblinder": "37e0f171eb07f894a3e0dcba40f7f4d708516381fb26752ef526ba4fce74a3e7",
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2"
+    },
+    {
+      "vin": 6,
+      "satoshi": 29676273,
+      "amountblinder": "c95a00300b738b3cd507b8cfdd0510ee1f85258e1b75ce5ee3d85c0b1bdf0861",
+      "assetblinder": "f9d0cebce56a1b7c1f8d486eca62d4dc8921c981fcf24b0e131ea166aeb3660e",
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2"
+    },
+    {
+      "satoshi": 5282,
+      "vin": 7,
+      "assetblinder": "3cd53f93a46036dc44a8042ccf0fcc6d8e2018ca0b921de05eb4f1b965c08558",
+      "asset_id": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+      "amountblinder": "ace96f4e3b0fd7b33f35afe94212b45f151a38dc0c0eccb6fd9e7de6ad201377"
+    }
+  ],
+  "outputs": [
+    {
+      "assetblinder": "9bb9c61d6d26511e48644cccae28ee25f4a0b55cbec89282775dbab70dfa8094",
+      "satoshi": 22439000,
+      "asset_id": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "vout": 1,
+      "amountblinder": "50ed3e4a0990acb5a9ee39454289e8ae709bf28047e6cbd7b87fe53cf8a507ab"
+    },
+    {
+      "vout": 2,
+      "asset_id": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+      "satoshi": 4808,
+      "amountblinder": "88859d1aef89153b2f9b6d7e67af819f276c5e0619b6ec5644a5ea8dc417912d",
+      "assetblinder": "b3e8548ecb77afd93a059e68b3df8957a31c5cb5ba3a0b817500944df53eb6d8"
+    }
+  ],
+  "txid": "8a5d842262f9e4cb964c10a4751564215ee2257983d5ef15b68dae68b6ac9724",
+  "version": 0
+}

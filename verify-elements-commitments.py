@@ -39,14 +39,20 @@ def parse_commitment_hex(h):
     except (ValueError, TypeError):
         err("Invalid hex value")
 
-def parse_sat(i):
+def parse_int(i, max):
     try:
         i = int(i)
-        if i <= 0 or i > 21*10**14:
+        if i <= 0 or i > max:
             err("Invalid range")
         return i
     except (ValueError, TypeError):
         err("Invalid int")
+
+def parse_idx(i):
+    return parse_int(i, max=2**32-1)
+
+def parse_sat(i):
+    return parse_int(i, max=21*10**14)
 
 def parse_blinded_element(e):
     valid_key_sets = [
@@ -76,6 +82,38 @@ def parse_blinded_element(e):
         "amount_commitment_bin": amount_commitment_bin,
     }
 
+def reorder_elements_v0(l, key):
+    if len(l) == 0:
+        return l
+
+    valid_key_sets = [
+        {"asset_id", "assetblinder", "satoshi", "amountblinder", key},
+    ]
+    for e in l:
+        if not isinstance(e, dict):
+            err("Should be a dict")
+        if set(e.keys()) not in valid_key_sets:
+            err("Invalid keys")
+
+    indexes = {e[key] for e in l}
+    if len(l) != len(indexes):
+        err("Repeated indexes")
+    return [next((e for e in l if e[key] == i), {key: i}) for i in range(max(indexes) + 1)]
+
+def parse_blinded_element_v0(e):
+    asset_commitment_bin = None
+    amount_commitment_bin = None
+    if len(e.keys()) == 5:
+        asset_commitment_bin = wally.asset_generator_from_bytes(parse_uint256_hex(e["asset_id"]), parse_uint256_hex(e["assetblinder"]))
+        amount_commitment_bin = wally.asset_value_commitment(parse_sat(e["satoshi"]), parse_uint256_hex(e["amountblinder"]), asset_commitment_bin)
+
+    return {
+        "asset_id_hex": e.get("asset_id"),
+        "asset_commitment_bin": asset_commitment_bin,
+        "amount_satoshi": e.get("satoshi"),
+        "amount_commitment_bin": amount_commitment_bin,
+    }
+
 def parse_json_no_version(j):
     if set(j.keys()) != {"inputs", "outputs"}:
         err("Invalid keys")
@@ -89,6 +127,19 @@ def parse_json_no_version(j):
 
     return inputs_unblinded, outputs_unblinded
 
+def parse_json_v0(j):
+    if set(j.keys()) != {"version", "inputs", "outputs", "txid", "type"}:
+        err("Invalid keys")
+    if not isinstance(j["inputs"], list):
+        err("Should be a list")
+    if not isinstance(j["outputs"], list):
+        err("Should be a list")
+
+    inputs_unblinded = {vin: parse_blinded_element_v0(e) for vin, e in enumerate(reorder_elements_v0(j["inputs"], key="vin"))}
+    outputs_unblinded = {vout: parse_blinded_element_v0(e) for vout, e in enumerate(reorder_elements_v0(j["outputs"], key="vout"))}
+
+    return inputs_unblinded, outputs_unblinded
+
 def parse_blinded_file(file):
     with file as f:
         j = json.load(file)
@@ -97,6 +148,8 @@ def parse_blinded_file(file):
         version = j.get("version")
         if version is None:
             return parse_json_no_version(j)
+        if version == 0:
+            return parse_json_v0(j)
         err("Unsupported version")
 
 def parse_input_txs(input_tx_files):

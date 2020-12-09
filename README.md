@@ -22,6 +22,91 @@ Or install from source, following
 
 ## Usage
 
+Blinders json may be of 2 kinds: no version or version 0.
+Green apps outputs version 0 json, while no version json strings support things such as only revealing the asset or amount.
+
+### Version 0
+
+An incoming transaction:
+```
+$ python verify-elements-commitments.py --tx data/version0/266ee76b.txt --blinded data/version0/blinders1.json
+{
+  "txid": "266ee76b6fba86bdd31bdb42e2fbb2d56990fd84af0f325400e50f7621c2ea8b",
+  "inputs": [],
+  "outputs": [
+    {
+      "vout": 0,
+      "asset": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+      "satoshi": 100
+    }
+  ]
+}
+```
+
+An outgoing transaction:
+```
+$ python verify-elements-commitments.py --tx data/version0/8a5d8422.txt --blinded data/version0/blinders2.json --input-txs data/version0/5eeaccb0.txt data/version0/3c393ea4.txt data/version0/79cb0bdc.txt data/version0/5c1ce8a2.txt data/version0/c48bdce5.txt data/version0/23e6fa9b.txt data/version0/a2445246.txt data/version0/c274241d.txt
+{
+  "txid": "8a5d842262f9e4cb964c10a4751564215ee2257983d5ef15b68dae68b6ac9724",
+  "inputs": [
+    {
+      "vin": 0,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 22439000
+    },
+    {
+      "vin": 1,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 10000000
+    },
+    {
+      "vin": 2,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 10000000
+    },
+    {
+      "vin": 3,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 107909
+    },
+    {
+      "vin": 4,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 107909
+    },
+    {
+      "vin": 5,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 107909
+    },
+    {
+      "vin": 6,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 29676273
+    },
+    {
+      "vin": 7,
+      "asset": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+      "satoshi": 5282
+    }
+  ],
+  "outputs": [
+    {
+      "vout": 1,
+      "asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+      "satoshi": 22439000
+    },
+    {
+      "vout": 2,
+      "asset": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+      "satoshi": 4808
+    }
+  ]
+}
+```
+
+### No version
+
 Verify revealed asset and satoshi for some outputs:
 
 ```

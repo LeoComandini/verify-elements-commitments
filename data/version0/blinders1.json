@@ -1,0 +1,15 @@
+{
+  "version": 0,
+  "inputs": [],
+  "outputs": [
+    {
+      "asset_id": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+      "satoshi": 100,
+      "amountblinder": "043956101bec27c865aba5e2263137493f59090053d5b6adc31375f7dad5852c",
+      "assetblinder": "6b9661f0b04ca51043f659c1e13b730e92ed8244b3cb59e559c7b9d7a480bc38",
+      "vout": 0
+    }
+  ],
+  "txid": "266ee76b6fba86bdd31bdb42e2fbb2d56990fd84af0f325400e50f7621c2ea8b",
+  "type": "incoming"
+}
