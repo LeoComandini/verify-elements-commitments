@@ -25,7 +25,7 @@ Or install from source, following
 Verify revealed asset and satoshi for some outputs:
 
 ```
-$ python verify-elements-commitments.py --tx data/tx1.txt --blinded data/blinders1.json
+$ python verify-elements-commitments.py --tx data/no-version/36d9b0d4.txt --blinded data/no-version/blinders1.json
 {
   "txid": "36d9b0d47c09bbb1f5ffc363f89e9deef54fd71ece0c0d94196084b2e0af673e",
   "inputs": [],
@@ -42,7 +42,7 @@ $ python verify-elements-commitments.py --tx data/tx1.txt --blinded data/blinder
 Verify revealed asset (only) for some outputs:
 
 ```
-$ python verify-elements-commitments.py --tx data/tx1.txt --blinded data/blinders1asset.json
+$ python verify-elements-commitments.py --tx data/no-version/36d9b0d4.txt --blinded data/no-version/blinders1asset.json
 {
   "txid": "36d9b0d47c09bbb1f5ffc363f89e9deef54fd71ece0c0d94196084b2e0af673e",
   "inputs": [],
@@ -58,7 +58,7 @@ $ python verify-elements-commitments.py --tx data/tx1.txt --blinded data/blinder
 Or only satoshi:
 
 ```
-$ python verify-elements-commitments.py --tx data/tx1.txt --blinded data/blinders1amount.json
+$ python verify-elements-commitments.py --tx data/no-version/36d9b0d4.txt --blinded data/no-version/blinders1amount.json
 {
   "txid": "36d9b0d47c09bbb1f5ffc363f89e9deef54fd71ece0c0d94196084b2e0af673e",
   "inputs": [],
@@ -74,7 +74,7 @@ $ python verify-elements-commitments.py --tx data/tx1.txt --blinded data/blinder
 Verify revealed asset and satoshi for some _inputs_:
 
 ```
-$ python verify-elements-commitments.py --tx data/tx2.txt --blinded data/blinders2.json --input-txs data/tx1.txt
+$ python verify-elements-commitments.py --tx data/no-version/aeaa29a3.txt --blinded data/no-version/blinders2.json --input-txs  data/no-version/36d9b0d4.txt
 {
   "txid": "aeaa29a3252a024f49ea22bec4aaf07852de7d46bbae7ca06d347b1015e5d32b",
   "inputs": [
