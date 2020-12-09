@@ -76,22 +76,28 @@ def parse_blinded_element(e):
         "amount_commitment_bin": amount_commitment_bin,
     }
 
+def parse_json_no_version(j):
+    if set(j.keys()) != {"inputs", "outputs"}:
+        err("Invalid keys")
+    if not isinstance(j["inputs"], list):
+        err("Should be a list")
+    if not isinstance(j["outputs"], list):
+        err("Should be a list")
+
+    inputs_unblinded = {vin: parse_blinded_element(e) for vin, e in enumerate(j["inputs"])}
+    outputs_unblinded = {vout: parse_blinded_element(e) for vout, e in enumerate(j["outputs"])}
+
+    return inputs_unblinded, outputs_unblinded
+
 def parse_blinded_file(file):
     with file as f:
         j = json.load(file)
         if not isinstance(j, dict):
-            err("Should be a list")
-        if set(j.keys()) != {"inputs", "outputs"}:
-            err("Invalid keys")
-        if not isinstance(j["inputs"], list):
-            err("Should be a list")
-        if not isinstance(j["outputs"], list):
-            err("Should be a list")
-
-        inputs_unblinded = {vin: parse_blinded_element(e) for vin, e in enumerate(j["inputs"])}
-        outputs_unblinded = {vout: parse_blinded_element(e) for vout, e in enumerate(j["outputs"])}
-
-        return inputs_unblinded, outputs_unblinded
+            err("Should be a dict")
+        version = j.get("version")
+        if version is None:
+            return parse_json_no_version(j)
+        err("Unsupported version")
 
 def parse_input_txs(input_tx_files):
     input_txs_map = {}
